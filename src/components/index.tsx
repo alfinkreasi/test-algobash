@@ -1,34 +1,21 @@
-import React, { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { Carousel } from "@material-tailwind/react";
+import { useState } from "react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import Logo from "./../statics/logo.svg";
-import LogoWhite from "./../statics/logo-white.svg";
-import coreValuesIllustration from "./../statics/core-values-illustration.svg";
-import Benjamin from "./../statics/benjamin.svg";
-import speciality1 from "./../statics/speciality-1.svg";
-import planList from "./../data/planList.json";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import coreValue from "./../data/coreValue.json";
-import departementList from "./../data/departementList.json";
-import { Carousel, Select, Button, Option } from "@material-tailwind/react";
+import planList from "./../data/planList.json";
+import Benjamin from "./../statics/benjamin.svg";
+import coreValuesIllustration from "./../statics/core-values-illustration.svg";
+import speciality1 from "./../statics/speciality-1.svg";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function App() {
-  const [departement, setDepartemen] = useState<string | undefined>("1");
   const [plan, setPlan] = useState(1);
   return (
     <div className="App">
-      <header
-        id="header"
-        className="position-absolute flex justify-between flex-row px-10 py-5"
-      >
-        <div className="">
-          <img src={Logo} alt="logo" />
-        </div>
-        <div className="">
-          <RxHamburgerMenu size={20} />
-        </div>
-      </header>
+      <Header />
       <main>
         <div className="bg-[#4097DB] flex flex-col justify-center items-center relative">
           <div className="w-full relative">
@@ -297,66 +284,8 @@ function App() {
             ))}
           </div>
         </div>
-        <div className="bg-[#07477A] p-4 pt-0 lg:pt-10 pb-10 flex flex-col justify-center lg:flex-row">
-          <div className="py-6 flex-1 flex items-start md:items-center">
-            <img src={LogoWhite} alt="logo" />
-          </div>
-          <div className="flex-1 bg-white p-8">
-            <select
-              style={{
-                border: "1px solid rgba(0, 0, 0, 0.3)",
-                color: "#00537C",
-                fontSize: "14px",
-                fontWeight: "700",
-              }}
-              className="p-2 rounded-md w-full"
-              value={departement}
-              onChange={(e) => {
-                console.log(e);
-                setDepartemen(e.target.value);
-              }}
-            >
-              {departementList.map((dl, i) => (
-                <option value={i.toString()} key={i}>
-                  {dl.name}
-                </option>
-              ))}
-            </select>
-            <p
-              style={{ color: "#25A0D8", fontSize: "18px" }}
-              className="mt-5 mb-4"
-            >
-              {departement
-                ? departementList[Number(departement)].address
-                : null}
-            </p>
-          </div>
-          <div className="flex-1 flex flex-col mt-5 lg:mt-0 lg:pl-5">
-            <Button
-              variant="text"
-              color="white"
-              className="text-left w-auto px-0"
-            >
-              Who We Are
-            </Button>
-            <Button
-              variant="text"
-              color="white"
-              className="text-left w-auto px-0"
-            >
-              Our Values
-            </Button>
-            <Button
-              variant="text"
-              color="white"
-              className="text-left w-auto px-0"
-            >
-              The Perks
-            </Button>
-          </div>
-        </div>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }
